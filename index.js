@@ -14,7 +14,8 @@ class linked_list{
       next: null
     };
     // This node will be the new tail.
-    // Point the tail's next to this node, point the tail to this node.
+    // Point the old tail to this node, 
+    // point the tail to this node.
     this.tail.next = new_node;
     this.tail = new_node;
     this.length++;
@@ -25,7 +26,6 @@ class linked_list{
       value: value,
       next: null
     };
-    // This node will be the new tail.
     new_node.next = this.head;
     this.head = new_node;
     this.length++;
