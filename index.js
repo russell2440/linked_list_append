@@ -43,28 +43,30 @@ class linked_list{
       this.append(value);
       return
     }
-    let pn=null;
-    let cn=this.head;
+    // create new node, traverse to leader,
+    // patch in new node.
+    let nn = new node(value);
+    let leadn = this.traverse_to_index(index-1);
+    nn.next = leadn.next;
+    leadn.next = nn;
+    this.length++;
+  }
+  traverse_to_index(index){
     let i=0;
-    while(cn!=null){
-      if(i==index){
-        let nn = new node(value);
-        nn.next = cn;
-        pn.next = nn;
-      }
-      pn=cn;
-      cn=cn.next;
+    let cur_n=this.head;
+    while(i!==index){
+      cur_n=cur_n.next;
       i++;
     }
-    this.length++;
+    return cur_n;
   }
   // Traverse ll and print each node value
   print(){
-    console.log("The linked list: ");
-    for(let cn=this.head; cn!=null; cn=cn.next){
-      console.log(cn.value);
+    let val_array = [];
+    for(let i=0,cn=this.head; cn!=null; i++,cn=cn.next){
+      val_array[i] = cn.value;
     }
-    console.log(this.length);
+    console.log(val_array);
   }
 };
 
