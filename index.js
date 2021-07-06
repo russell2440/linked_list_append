@@ -51,6 +51,12 @@ class linked_list{
     leadn.next = nn;
     this.length++;
   }
+  remove(index){
+    let leadn = this.traverse_to_index(index-1);
+    let targn = leadn.next;
+    leadn.next=targn.next;
+    this.length--;
+  }
   traverse_to_index(index){
     let i=0;
     let cur_n=this.head;
@@ -86,5 +92,9 @@ ll.print();
 ll.insert(0,97)
 ll.print();
 ll.insert(100,96)
+ll.print();
+ll.remove(2);
+ll.print();
+ll.remove(2);
 ll.print();
 
