@@ -39,6 +39,10 @@ class linked_list{
       this.prepend(value);
       return
     }
+    if(index>=this.length){
+      this.append(value);
+      return
+    }
     let pn=null;
     let cn=this.head;
     let i=0;
@@ -52,6 +56,7 @@ class linked_list{
       cn=cn.next;
       i++;
     }
+    this.length++;
   }
   // Traverse ll and print each node value
   print(){
@@ -59,6 +64,7 @@ class linked_list{
     for(let cn=this.head; cn!=null; cn=cn.next){
       console.log(cn.value);
     }
+    console.log(this.length);
   }
 };
 
@@ -77,6 +83,6 @@ ll.insert(1,98)
 ll.print();
 ll.insert(0,97)
 ll.print();
-ll.insert(6,96)
+ll.insert(100,96)
 ll.print();
 
