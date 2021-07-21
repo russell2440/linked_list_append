@@ -10,12 +10,17 @@ class node{
 // Create linked list with prepend and
 // append methods, using node class.
 class linked_list{
-  constructor(value){
-    let new_node = new node(value);
-    this.head = new_node;
+  constructor(){
+    this.head = null;
     this.tail = this.head;
-    this.length = 1;
+    this.length = 0;
   };
+  prepend(value){
+    let new_node = new node(value);
+    new_node.next = this.head;
+    this.head = new_node;
+    this.length++;
+  }
   append(value){
     // This node will be the new tail.
     // Point the old tail to this node, 
@@ -26,15 +31,14 @@ class linked_list{
     this.length++;
     return this;
   };
-  prepend(value){
-    let new_node = new node(value);
-    new_node.next = this.head;
-    this.head = new_node;
-    this.length++;
-  }
   insert(index, value){
     // Traverse list to node indicated by index
     // Make new node, point to current node
+    if(!this.length){
+      this.prepend(value);
+      this.tail = this.head;
+      return;
+    }
     if(index==0){
       this.prepend(value);
       return
@@ -76,14 +80,16 @@ class linked_list{
   }
 };
 
-let ll = new linked_list(10);
-console.log(ll);
+let ll = new linked_list();
+ll.print();
+ll.insert(0,10);
+ll.print();
 ll.append(15);
-console.log(ll);
+ll.print();
 ll.append(16);
-console.log(ll);
+ll.print();
 ll.prepend(1);
-console.log(ll);
+ll.print();
 ll.print();
 ll.insert(2,99)
 ll.print();
